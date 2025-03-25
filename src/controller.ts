@@ -11,6 +11,14 @@ const api = axios.create({
   },
 });
 
+export const welcome = async (req: Request, res: Response) => {
+  try {
+    return respond(res, 200, true, "Welcome to the Bit.ly proxy shortener API");
+  } catch (error: any) {
+    return respond(res, 500, false, error.message);
+  }
+};
+
 export const shorten = async (req: Request, res: Response) => {
   try {
     if (!req.body?.long_url) {
