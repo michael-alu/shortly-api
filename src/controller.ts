@@ -31,13 +31,9 @@ export const deleteLink = async (req: Request, res: Response) => {
       return respond(res, 400, false, "Please provide a URL ID to delete");
     }
 
-    console.log({ first: req.params });
-
     const response = await api.delete(
       `/bitlinks/${encodeURIComponent(req.params.id)}`
     );
-
-    console.log({ res: response.data });
 
     return respond(res, 200, true, "URL deleted successfully", response.data);
   } catch (error: any) {
